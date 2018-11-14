@@ -4,12 +4,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct tokens
+struct list
 {
-    enum token_type *t;
+    enum token_t *t;
+    struct list *next;
+    size_t size;
 };
 
-enum token_type
+enum token_t
 {
     IF = 1,
     THEN,
@@ -22,7 +24,9 @@ enum token_type
     CMD,
     L_OR,
     L_AND,
-    SEMICOLON
+    SEMICOLON,
+    L_BRACES,
+    R_BRACES
 };
 
 #endif /* ! TOKENS_H */
