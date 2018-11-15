@@ -15,22 +15,24 @@ void separate(struct list *l, int argc, char *argv[])
 {
     l = l;
     argc = argc;
-    if (!fnmatch("--version", argv[1], 0))
+    if (!fnmatch("--version", argv[1], 0) || !fnmatch("-v", argv[1], 0))
         puts("Version 0.01");
-    else if (!fnmatch("--norc", argv[1], 0))
+    else if (!fnmatch("--norc", argv[1], 0) || !fnmatch("-n", argv[1], 0))
         puts("--norc");
         //fix it with how to deactivate the resources headers
-    else if (!fnmatch("--ast-print", argv[1], 0))
+        //fix multiple options
+    else if (!fnmatch("--ast-print", argv[1], 0) || !fnmatch("-a", argv[1], 0))
         puts("--ast-print");
         //fix it with the parser
     else if (!fnmatch("-O", argv[1], 0) || !fnmatch("+O", argv[1], 0))
         puts("-O or +O");
         //Call the func and check if -O or +O
+        //fix -O or +O stick with something else just behind it (works for O)
     else if (!fnmatch("-c", argv[1], 0))
         puts("-c");
         //run the cmd with ast
     else
-        puts("JCPas");
+        error_helper(argv[1]);
         //run file
 
 }
