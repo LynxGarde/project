@@ -1,5 +1,6 @@
 #include <fnmatch.h>
-#include "tokens.h"
+#include "list.h"
+#include "options.h"
 
 /*
 static struct option long_options[] =
@@ -11,11 +12,22 @@ static struct option long_options[] =
 };
 */
 
+void read_file(struct list *l, char *path)
+{
+    FILE *f = fopen(path, "r");
+    if (!f)
+        return;
+    l = l;
+}
+
 void separate(struct list *l, int argc, char *argv[])
 {
     l = l;
     argc = argc;
-    if (!fnmatch("--version", argv[1], 0) || !fnmatch("-v", argv[1], 0))
+    if (argv[1][0] != '-')
+        puts("file");
+        //run file
+    else if (!fnmatch("--version", argv[1], 0) || !fnmatch("-v", argv[1], 0))
         puts("Version 0.01");
     else if (!fnmatch("--norc", argv[1], 0) || !fnmatch("-n", argv[1], 0))
         puts("--norc");
@@ -34,14 +46,14 @@ void separate(struct list *l, int argc, char *argv[])
     else
         error_helper(argv[1]);
         //run file
-
 }
 
 int main(int argc, char *argv[])
 {
-    struct list *l = list_init();
     if (argc == 1)
         return 0;
+    struct list *l = list_init();
     separate(l, argc, argv);
+    list_destroy(l);
     return 0;
 }

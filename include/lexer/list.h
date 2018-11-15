@@ -35,15 +35,14 @@ struct list
 {
     size_t size;
     struct list_elt *head;
+    struct list_elt *iterator;
 };
 
 struct list *list_init(void);
-struct list_elt *list_add(struct list *l, enum token t, char *str);
+void list_add(struct list *l, enum token t, char *str);
 struct list_elt *list_pop(struct list *l);
 void elt_destroy(struct list_elt *elt);
 void list_destroy(struct list *l);
 void list_print(struct list *l);
-
-void error_helper(char *str);
 
 #endif /* ! TOKENS_H */

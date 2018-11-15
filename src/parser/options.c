@@ -1,4 +1,5 @@
-#include "tokens.h"
+#include "options.h"
+#include <stdio.h>
 
 void error_helper(char *str)
 {
@@ -12,5 +13,3 @@ void error_helper(char *str)
     printf("Shell options:\n");
     printf("\t-c command or -O\n");
 }
-
-

@@ -1,4 +1,4 @@
-#include "tokens.h"
+#include "list.h"
 
 struct list *list_init(void)
 {
@@ -9,18 +9,17 @@ struct list *list_init(void)
     return l;
 }
 
-struct list_elt *list_add(struct list *l, enum token t, char *str)
+void list_add(struct list *l, enum token t, char *str)
 {
     if (!l)
-        return NULL;
+        return;
     struct list_elt *new = malloc(sizeof(struct list_elt));
     if (!new)
-        return NULL;
+        return;
     new->t = t;
-    new->next = l->head;
     new->strtoken = str;
+    new->next = l->head;
     l->head = new;
-    return new;
 }
 
 struct list_elt *list_pop(struct list *l)
@@ -44,7 +43,7 @@ struct list_elt *list_pop(struct list *l)
 void elt_destroy(struct list_elt *elt)
 {
     if (elt->next)
-        elt_destroy(elt);
+        elt_destroy(elt->next);
     free(elt);
 }
 
@@ -59,10 +58,10 @@ void list_destroy(struct list *l)
 void list_print(struct list *l)
 {
     struct list_elt *tmp = l->head;
+    puts("head");
     for (int i = 0; tmp; i++)
     {
-        printf("%d ", tmp->t);
+        printf("%s %d\n", tmp->strtoken, tmp->t);
         tmp = tmp->next;
     }
-    printf("\n");
 }
