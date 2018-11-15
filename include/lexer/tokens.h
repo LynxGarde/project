@@ -36,4 +36,11 @@ struct list
     struct list_elt *head;
 };
 
+struct list *list_init(void);
+struct list_elt *list_add(struct list *l, enum token t);
+enum token list_pop(struct list *l);
+void elt_destroy(struct list_elt *elt);
+void list_destroy(struct list *l);
+void list_print(struct list *l);
+
 #endif /* ! TOKENS_H */

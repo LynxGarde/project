@@ -68,7 +68,7 @@ void list_print(struct list *l)
     }
     printf("\n");
 }
-
+/*
 int main(void)
 {
     struct list *l = list_init();
@@ -116,4 +116,4 @@ int main(void)
     printf("ENUM_pop: %d\n", list_pop(l));
     list_destroy(l);
     return 0;
-}
+}*/
