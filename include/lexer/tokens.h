@@ -27,6 +27,7 @@ enum token
 struct list_elt
 {
     enum token t;
+    char *strtoken;
     struct list_elt *next;
 };
 
@@ -37,7 +38,7 @@ struct list
 };
 
 struct list *list_init(void);
-struct list_elt *list_add(struct list *l, enum token t);
+struct list_elt *list_add(struct list *l, enum token t, char *str);
 enum token list_pop(struct list *l);
 void elt_destroy(struct list_elt *elt);
 void list_destroy(struct list *l);

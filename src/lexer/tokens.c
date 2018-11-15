@@ -9,7 +9,7 @@ struct list *list_init(void)
     return l;
 }
 
-struct list_elt *list_add(struct list *l, enum token t)
+struct list_elt *list_add(struct list *l, enum token t, char *str)
 {
     if (!l)
         return NULL;
@@ -18,6 +18,7 @@ struct list_elt *list_add(struct list *l, enum token t)
         return NULL;
     new->t = t;
     new->next = l->head;
+    new->strtoken = str;
     l->head = new;
     return new;
 }
