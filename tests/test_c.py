@@ -15,5 +15,5 @@ def test_c():
     err.close()
     os.remove("out.tst")
     os.remove("err.tst")
-    assert(str_out == "-c\n")
+    assert(str_out == "42sh: -c: option requires an argument\n")
     assert(str_err == "")
