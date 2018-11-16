@@ -54,7 +54,7 @@ void separate(struct list *l, int argc, char *argv[])
         //Call the func and check if -O or +O
         //fix -O or +O stick with something else just behind it (works for O)
     else if (!fnmatch("-c", argv[1], 0))
-        puts("-c");
+        command(argc, argv);
         //run the cmd with ast
     else
         error_helper(argv[1]);

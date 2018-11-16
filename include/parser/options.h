@@ -17,5 +17,6 @@
  * \return Returns no value.
  */
 void error_helper(char *str);
+void command(int argc, char *argv[]);
 
 #endif /* ! OPTIONS_H */
