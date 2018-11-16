@@ -1,11 +1,13 @@
-/**
- * \file ast.h
+/*!
+ * \file ast_t.h
  * \brief Abstract Syntax Tree
  * \author Leo TORDJMAN
  */
 #pragma once
 
-/**
+#include "list.h"
+
+/*!
  * \struct ast_t
  * \brief Struct ast_t
  */
@@ -16,29 +18,39 @@ struct ast_t
     struct ast_t *sibling;
 };
 
-/**
+/*!
  * \fn struct ast_t *ast_init(char *key, struct ast_t *child,
- * struct ast_t *sibling)
- *
+    struct ast_t *sibling)
+
  * \brief Initialize a new instance of the struct ast_t and return a pointer.
- *
- * \param key: value of current node
- * \param child: first child
- * \param sibling: first sibling
- *
+
+ * \param key: value of current node.
+ * \param child: first child.
+ * \param sibling: first sibling.
+
  * \return Returns a new pointer on a new instance of struct ast_t. On error,
- * returns NULL;
+    returns NULL.
  */
 struct ast_t *ast_init(char *key, struct ast_t *child, struct ast_t *sibling);
 
-/**
+/*!
  * \fn void ast_delete(struct ast_t *ast)
- *
  * \brief Free the given ast.
- *
- * \param ast: ast to free
- *
+
+ * \param ast: ast to free.
+
  * \return Returns a new pointer on a new instance of struct ast_t. On error,
- * returns NULL;
+    returns NULL.
  */
 void ast_delete(struct ast_t *ast);
+
+/*!
+ * \fn struct ast_t *ast_build(struct list *l)
+ * \brief Build an AST from the given list.
+
+ * \param list: The list from witch the AST will be built.
+
+ * \return Returns a new pointer on a new instance of struct ast_t. On error,
+    returns NULL.
+ */
+struct ast_t *ast_build(struct list *l);
