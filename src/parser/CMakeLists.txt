@@ -1,3 +1,4 @@
+include_directories(../../include/lexer)
 include_directories(../../include/parser)
 
 add_library(parser ast_t.c options.c)
