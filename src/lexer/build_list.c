@@ -58,6 +58,58 @@ static int open_file(char *path)
     return fd;
 }
 
+static int special_case(struct list *l, char *buf, int i)
+{
+    char *tmp = NULL;
+    enum token t = NONE;
+    if (buf[i] == '&')
+    {
+        if (buf[i + 1] == '&')
+        {
+            tmp = malloc(sizeof(char) * 3);
+            strcpy(tmp, "&&\0");
+            i++;
+            t = L_AND;
+        }
+        else
+            t = L_AND;
+    }
+    else if (buf[i] == '|')
+    {
+        if (buf[i + 1] == '|')
+        {
+            tmp = malloc(sizeof(char) * 3);
+            strcpy(tmp, "||\0");
+            i++;
+            t = L_OR;
+        }
+        else
+            t = PIPE;
+    }
+    else if (buf[i] == ';')
+        t = SEMICOLON;
+    else if (buf[i] == '|')
+        t = PIPE;
+    else if (buf[i] == '$')
+        t = DOLLAR;
+    else if (buf[i] == '<')
+        t = L_RAFT;
+    else if (buf[i] == '>')
+        t = R_RAFT;
+    else if (buf[i] == '(')
+        t = L_PARENTHESE;
+    else if (buf[i] == ')')
+        t = R_PARENTHESE;
+    if (tmp == NULL)
+    {
+        tmp = malloc(sizeof(char) * 2);
+        tmp[0] = buf[i];
+        tmp[1] = '\0';
+    }
+    list_add(l, t, tmp);
+    return i;
+}
+
 void read_file(struct list *l, char *path)
 {
     int fd = open_file(path);
@@ -74,6 +126,8 @@ void read_file(struct list *l, char *path)
             if ((buffer[i] == ' ' || buffer[i] == '\n') && j == 0)
             {
                 i++;
+                if (i >= 4096)
+                    return;
                 continue;
             }
             else if (buffer[i] == ' ' || buffer[i] == '\n')
@@ -83,18 +137,21 @@ void read_file(struct list *l, char *path)
                 char *tok = malloc(sizeof(char) * len);
                 tok = strncpy(tok, str, len);
                 list_add(l, get_token(tok), tok);
+                i--;
                 j = 0;
             }
-            else if (buffer[i] < 'a' && buffer[i] > 'z')
+            else if ((buffer[i] < 'a' || buffer[i] > 'z') && (buffer[i] != ' '
+                && buffer[i] != '\n'))
             {
                 str[j] = '\0';
                 size_t len = strlen(str) + 1;
                 char *tok = malloc(sizeof(char) * len);
                 tok = strncpy(tok, str, len);
-                list_add(l, get_token(tok), tok);
-                char *single = malloc(sizeof(char) * 2);
-                single = strncpy(single, ";\0", 2);
-                list_add(l, get_token(single), single);
+                if (strcmp(str, ""))
+                    list_add(l, get_token(tok), tok);
+                else
+                    free(tok);
+                i = special_case(l, buffer, i);
                 j = 0;
             }
             else

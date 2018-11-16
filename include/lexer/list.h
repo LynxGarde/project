@@ -31,6 +31,13 @@ enum token
     SEMICOLON,
     L_BRACES,
     R_BRACES,
+    PIPE,
+    DOLLAR,
+    L_RAFT,
+    R_RAFT,
+    L_PARENTHESE,
+    R_PARENTHESE,
+    NONE
 };
 
 /*!
