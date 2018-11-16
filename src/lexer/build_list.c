@@ -58,8 +58,6 @@ static int open_file(char *path)
     return fd;
 }
 
-
-
 void read_file(struct list *l, char *path)
 {
     int fd = open_file(path);
@@ -83,8 +81,6 @@ void read_file(struct list *l, char *path)
                 str[j] = '\0';
                 size_t len = strlen(str) + 1;
                 char *tok = malloc(sizeof(char) * len);
-                if (!tok)
-                    puts("shit");
                 tok = strncpy(tok, str, len);
                 list_add(l, get_token(tok), tok);
                 j = 0;
@@ -94,8 +90,6 @@ void read_file(struct list *l, char *path)
                 str[j] = '\0';
                 size_t len = strlen(str) + 1;
                 char *tok = malloc(sizeof(char) * len);
-                if (!tok)
-                    puts("shit");
                 tok = strncpy(tok, str, len);
                 list_add(l, get_token(tok), tok);
                 char *single = malloc(sizeof(char) * 2);
