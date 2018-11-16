@@ -61,7 +61,7 @@ void list_print(struct list *l)
     puts("head");
     for (int i = 0; tmp; i++)
     {
-        printf("%s %d\n", tmp->strtoken, tmp->t);
+        printf("strtoken: %s\n", tmp->strtoken);
         tmp = tmp->next;
     }
 }

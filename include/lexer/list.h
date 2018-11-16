@@ -20,8 +20,6 @@ enum token
     SEMICOLON,
     L_BRACES,
     R_BRACES,
-
-    NONE
 };
 
 struct list_elt
@@ -35,7 +33,6 @@ struct list
 {
     size_t size;
     struct list_elt *head;
-    struct list_elt *iterator;
 };
 
 struct list *list_init(void);
