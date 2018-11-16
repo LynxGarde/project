@@ -37,7 +37,7 @@ static struct option long_options[] =
 void separate(struct list *l, int argc, char *argv[])
 {
     argc = argc;
-    if (argv[1][0] != '-')
+    if (argv[1][0] != '-' && argv[1][0] != '+')
         read_file(l, argv[1]);
         //run file
     else if (!fnmatch("--version", argv[1], 0) || !fnmatch("-v", argv[1], 0))
