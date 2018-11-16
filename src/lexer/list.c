@@ -44,11 +44,14 @@ void elt_destroy(struct list_elt *elt)
 {
     if (elt->next)
         elt_destroy(elt->next);
+    free(elt->strtoken);
     free(elt);
 }
 
 void list_destroy(struct list *l)
 {
+    if (!l)
+        return;
     struct list_elt *elt = l->head;
     if (elt)
         elt_destroy(elt);
@@ -61,7 +64,7 @@ void list_print(struct list *l)
     puts("head");
     for (int i = 0; tmp; i++)
     {
-        printf("%s %d\n", tmp->strtoken, tmp->t);
+        printf("strtoken: %s %d\n", tmp->strtoken, tmp->t);
         tmp = tmp->next;
     }
 }
