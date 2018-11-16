@@ -20,3 +20,10 @@ How to launch the TestSuite:
 => Environment: how to quit:
     - deactivate
 
+-------------Doxygen-------------
+
+=> Man page generation
+
+cd <rootdir>/doc/
+doxygen Doxyfile
+man man/man1/<file>
