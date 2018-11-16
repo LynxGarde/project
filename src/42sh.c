@@ -41,7 +41,7 @@ void separate(struct list *l, int argc, char *argv[])
         read_file(l, argv[1]);
         //run file
     else if (!fnmatch("--version", argv[1], 0) || !fnmatch("-v", argv[1], 0))
-        fprintf(stderr, "Version 0.3\n");
+        fprintf(stdout, "Version 0.3\n");
     else if (!fnmatch("--norc", argv[1], 0) || !fnmatch("-n", argv[1], 0))
         puts("--norc");
         //fix it with how to deactivate the resources headers
