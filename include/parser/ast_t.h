@@ -62,7 +62,7 @@ void ast_delete(struct ast_t *ast);
  * \brief Build an AST from the given list.
 
  * \param ast: The AST to build;
- * \param list: The list from witch the AST will be built.
+ * \param list: The list from which the AST will be built.
 
  * \return Returns a new pointer on a new instance of struct ast_t. On error,
     returns NULL.
