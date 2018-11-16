@@ -1,20 +1,26 @@
-#FIXME
+--------------CMake--------------
+Build using CMake:
+Create a directory 'build' from the root: mkdir build
+Go to build: cd build
+Build from the directory build: cmake ..
+Create the binary 42sh: make
+Clean: make clean
 
 --------------Environment--------------
 
 => Environment for TestSuite Not yet installed:
     Type the following commands to set the environment
 PS: this is just an one time installation
-(in root)
+(from root)
     - python -m venv env
     - source env/bin/activate
     - pip install -r tests/requirements.txt
 => Environment for TestSuite already installed:
-(in root)
+(from root)
     - source env/bin/activate
 
 How to launch the TestSuite:
-(in root)
+(from tests/)
     - pytest .
 
 => Environment: how to quit:
