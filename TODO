@@ -1,1 +1,40 @@
-#FIXME
+TODO list:
+v0.3:
+- options parser[ ]
+- shell parser[ ]
+- ast[ ]
+- ast printer[ ]
+- build system[OK]
+- testsuite[OK]
+- execution[ ]
+
+v0.5:
+- prompt[ ]
+- testsuite[ ]
+- options format[ ]
+- timeout management[ ]
+- execution[ ]
+- functions[ ]
+- ressource files[ ]
+- history[ ]
+
+v0.8:
+- tilde-expansion[ ]
+- built-in[ ]
+- advanced prompt[ ]
+- variables[ ]
+- quoting[ ]
+- path expansion[ ]
+- arithmetic expansion[ ]
+- readline[ ]
+- aliases[ ]
+- challenge[ ]
+
+v0.9:
+- completion[ ]
+- command substitution[ ]
+- job control[ ]
+
+v1.0:
+- 42sh[ ]
+- git sanity[ ]
